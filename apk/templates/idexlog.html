@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}" >
+    <script src="{{url_for('static',filename='js/bosstrap.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+    <title>Document</title>
+    <style>
+       .kotaklog{
+           min-height: 300px;
+           max-width: 700px;
+           margin-left: 300px;
+       }
+       .form-control{
+           min-width: 300px;
+           margin-left: 20px;
+       }
+       .col-md-3{
+           margin-left: 150px;
+           margin-top: 25px;
+       }   
+        
+    </style>
+</head>
+<body >
+    
+    <form action="{{url_for('add')}}" method="POST" enctype="multipart/form-data" >
+      
+          <div class="kotaklog border border-primary mt-5">
+              <div class="row">
+                  <div class="col-md-4">
+                      <input name="name" class="form-control mt-4" type="text" placeholder="NAME...">
+                      <input name="username" class="form-control mt-3" type="text" placeholder="USERNAME...">
+                      
+                      <input name="password" class="form-control mt-3" type="text" placeholder="PASSWORD...">
+                      <div class="row mt-3">
+                        <div class="col-md">
+                           <input class="ml-4" type="submit" value="create" style="height: 30px;">                          
+                        </div>
+                        <div class="col-md">
+                            <input name="gambar" type="file" accept="image/*" onchange="loadFile(event)">
+                        </div>
+
+                      </div>
+                  </div>
+                  <div class="col-md-3">
+                      <img src="" alt="" id="output" width="200px" height="200px">
+                      
+                  </div>
+              </div>
+          </div>
+      
+    </form>  
+
+      <script>
+        var loadFile = function(event) {
+          var output = document.getElementById('output');
+          output.src = URL.createObjectURL(event.target.files[0]);
+          output.onload = function() {
+            URL.revokeObjectURL(output.src) // free memory
+          }
+        };
+      </script>
+    
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+
+<!doctype html>
+<html lang="en">
+  {% block head %}  
+    <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      {% block style %}
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}" >
+      <link rel="stylesheet" href="{{url_for('static',filename='fontawesome/css/all.min.css')}}">
+      <link rel="stylesheet" href="{{url_for('static',filename='fontawesome/css/admin.css')}}">
+      {% endblock style %}
+
+      {% block title %}
+      <title>Hello, world!</title>
+      {% endblock title %}
+
+    </head>
+  {% endblock head %}
+   
+  
+  {% block body %}
+    <body style="background-color:rgb(5, 4, 63);">
+
+      {% block content %}
+      <h1>hello</h1>
+      {% endblock content %}
+
+      {% block script %}
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="{{url_for('static',filename='js/app.js')}}"></script>
+      <script src="{{url_for('static',filename='jquery.min.js')}}"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+      <script src="{{url_for('static',filename='js/bootstrap.min.js')}}" ></script>
+      {% endblock script%}
+    </body>
+    {% endblock body %}
+</html>

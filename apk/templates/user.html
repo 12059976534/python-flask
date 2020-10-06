@@ -1,0 +1,45 @@
+{% extends 'admin.html' %}
+
+{% block sidebar %}
+<div class="col-md-2 bg-dark pr-3 pt-4 height-100 " id="side">
+        <ul class="nav flex-column ml-3 ">
+            <li class="nav-item">  
+              <a class="nav-link active" href="" id="dash"><i class="fas fa-tachometer-alt mr-2"></i>DASBORD</a> <hr class="bg-scondary">
+            </li>
+        
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('upload')}}"><i class="fas fa-cloud-upload-alt mr-2"></i>UPLOAD</a><hr class="bg-scondary">
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('usrconten')}}"><i class="fas fa-plus"></i> CONTENT</a><hr class="bg-scondary">
+            </li>
+
+            <div style="height: 357px; width: 80%; background-color: rgb(55, 47, 68);  border-radius: 5px;"></div>
+          </ul>
+    </div>
+  {% endblock sidebar %}  
+
+{% block conten %}
+<div class="col-md-10 " style="background-color: rgb(0, 5, 61);" id="content">
+  <div style="color: black;">
+    <h3><i class="fas fa-tachometer-alt mt-4 ml-3 mr-3"></i>DASBOARD</h3><hr class="bg-scondary">
+  </div>  
+    <div class="row" id="carddata">
+
+          <div class="card ml-4" style="width: 18rem; background-color: rgb(218, 0, 0);">
+            <div class="card-body">
+                <div class="card-body-icon">
+                  <i class="far fa-newspaper"></i>
+                </div>
+                <p class="card-text">JUMLAH CONTEN:</p>  
+                <div class="display-4">100</div>
+              <a href="">LIHAT DETAILS <i class="fas fa-angle-double-right"></i></a>
+            </div>
+          </div>
+
+    </div>
+
+
+</div>
+{% endblock conten %}  

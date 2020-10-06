@@ -1,0 +1,27 @@
+{% extends'index.html' %}
+
+{% block conten %}
+
+  <div class="container">
+      <div class="profil">
+          <div class="row">
+            <div class="col-md-1">
+                <img class="rounded-circle " src="{{url_for('static',filename='upload/'+data.user.gambar)}}" alt="" width="60px" height="60px" style="margin-top: 100px;">
+            </div>
+            <div class="col-md-5" style="margin-top: 110px;">
+                <h4 class="text-light">Andri wahyu anugrah the forest</h4>
+            </div>
+              
+          </div>
+      </div>
+      <div class="conten " style="min-width: 300px ; min-height: 400px; margin-top: 80px;">
+        <div class="head">
+            <h1 class="text-light ">{{data.tilte}}</h1>
+            <h6 class="mb-3 text-light" style="text-align:justify;">{{data.ket}}</h6>
+        </div>
+        <div class="isi">{{data.isi|safe}}</div>
+
+      </div>
+  </div>
+
+{% endblock conten %}

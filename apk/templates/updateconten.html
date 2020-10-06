@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}" >
+    <link rel="stylesheet" href="{{url_for('static',filename='fontawesome/css/all.min.css')}}">
+</head>
+<body style="background-color: rgb(0, 5, 61);">
+    <div class="container">
+        {% block conten %}
+<div class="col-md-10" style="background-color: rgb(0, 5, 61);">
+  <div style="color: black;">
+    <h3><i class="fas fa-cloud-upload-alt mt-4 ml-3 mr-3"></i>UPLOAD</h3><hr class="bg-scondary">
+  </div>  
+
+  <div class="container">
+    <!-- {{ ckeditor.load() }} -->
+    {{ ckeditor.load(custom_url=url_for('static', filename='js/ckeditor/ckeditor.js')) }}
+    <form action="/update{{data.id}}" method="POST" >
+      <input class="mb-3" type="submit" value="POST">
+      <div class="form-group">
+        <label for="exampleFormControlInput1">TITLE</label>
+        <input name="title" value="{{data.tilte}}" type="text" class="form-control" id="exampleFormControlInput1" placeholder="TITLE_EXAMPLE">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">KATEGORI</label>
+        <select name="kategori" id="" class="form-control">
+          {% for i in k %}
+          <option class="text-light" value="{{i}}" >{{i}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="ket" >Kterangan</label>
+        <textarea name="keterangan" class="form-control" id="ket"  >{{data.ket}}</textarea>
+      </div>
+     
+      <div class="form-group" id="toolbar-container">
+        <label for="exampleFormControlTextarea1" >Example textarea</label>
+        <textarea name="isi" class="editor form-control" id="ck">{{data.isi}}</textarea>
+      </div>
+     
+    </form>
+  </div>
+  <script type="text/javascript">
+    CKEDITOR.replace( 'ck',{
+       height:['800px']
+    });
+  </script>
+  
+  
+    
+</div>
+{% endblock conten %}  
+    </div>
+</body>
+</html>

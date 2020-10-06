@@ -1,0 +1,49 @@
+{% extends 'admin.html' %}
+
+{% block conten %}
+<div class="col-md-10 " style="background-color: rgb(0, 5, 61);" id="content">
+  <div style="color: black;">
+    <h3><i class="fas fa-tachometer-alt mt-4 ml-3 mr-3"></i>CONTEN</h3><hr class="bg-scondary">
+  </div>  
+
+  <div class="container">
+    <div class="card" style="background-color: rgb(15, 185, 236); max-width: 650px;">
+      <div class="row ml-4 mr-4 mt-4 mb-4">
+
+        <!-- <table class="border border-dark">
+            <tr>
+                <td class="border">no</td>
+            </tr>
+            {% for no in no %}
+            <tr>
+                <td class="border"><h5>{{no}}</h5></td>
+            </tr>
+            {% endfor %}
+        </table> -->
+        <table>
+            <tr class="text-dark ">
+                <td class="border">TITLE</td>
+                <td class="border">TGL_UPLOAD</td>
+                <td class="border">UPDATE</td>
+                <td class="border">DELETE</td>
+            </tr>
+        
+          {% for data in data %}
+            <tr class="text-dark">
+              <td class="border"> <h5 class="ml-2 mr-2 ">{{data.tilte}}</h5></td>
+              <td class="border"><h6 class="ml-2 mr-2 ">{{data.data_time}}</h6></td>
+              <td class="border"><a class="ml-2 mr-2" href="/update{{data.id}}">UPDATE</a></td>
+              <td class="border"><a class="ml-2 mr-2" href="">DELETE</a></td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+  
+
+  
+
+    
+</div>
+{% endblock conten %}  

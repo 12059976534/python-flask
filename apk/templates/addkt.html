@@ -1,0 +1,50 @@
+{% extends 'admin.html' %}
+
+  <!-- conten -->
+  {% block conten %}
+  <div class="col-md-10 " style="background-color: rgb(0, 5, 61);" id="content">
+    <div style="color: black;">
+      <h3><i class="fas fa-plus mt-4 ml-3 mr-3"></i>NEW KATEGORI</h3><hr class="bg-scondary">
+    </div>  
+
+    <div class="container">
+        <form action="{{url_for('kategori')}}" method="POST">
+           <div class="kotakform" style="max-width: 400px;">
+                <input class="form-control" name="kategori" type="text">
+                <button class="form-control mt-3 mb-5" type="submit">add</button>
+           </div> 
+           
+        </form>
+
+       <div class="row">
+           <div class="col-md-4">
+            <table>
+                <tr class="border border-dark">
+                    <!-- <td class="text-primary border border-dark"><h6 class="ml-2 mr-2 mt-2">NO</h6></td> -->
+                    <td class="text-primary border border-dark"><h6 class="ml-2 mr-2 mt-2">Name_kategori</h6></td>
+                    <td class="text-primary border border-dark"><h6 class="ml-2 mr-2 mt-2">UPDATE</h6></td>
+                    <td class="text-primary border border-dark"><h6 class="ml-2 mr-2 mt-2">DELETE</h6></td>
+                </tr>
+                {% for data in data %}
+        
+                <tr class="border border-dark">
+                    <!-- <td class="text-primary border border-dark"><h6 class="ml-2 mr-2 mt-2">{{data.id}}</h6></td> -->
+                    <td class="text-primary border border-dark"><h6 class="ml-2 mr-2 mt-2">{{data.kat}}</h6></td>
+                    <td class="text-primary border border-dark"><h6 class="ml-2 mr-2 mt-2">UPDATE</h6></td>
+                    <td class="text-primary border border-dark"><h6 class="ml-2 mr-2 mt-2"><a href="/delete{{data.id}}">DELETE</a></h6></td>
+                </tr>
+                 
+                {% endfor %}
+            </table>
+           </div>
+           <div class="col-md text-danger">
+               <h3>WARNIG !!!</h3>
+               <h3>Pastikan tidak ada konten terkait kategori</h3>
+               <h3>Sebelum melakukan delete</h3>
+           </div>
+       </div>
+    </div>
+     
+  </div>
+{% endblock conten %}  
+<!-- conten -->

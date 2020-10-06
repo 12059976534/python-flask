@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  {% block head %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block style %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}" >
+    <link rel="stylesheet" href="{{url_for('static',filename='fontawesome/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/admin.css')}}">
+    {% endblock style %}
+    {% block title %}
+    <title>Hello, world!</title>
+    {% endblock title %}
+  </head>
+  {% endblock head %}
+   <style type="text/css">
+   @media(max-width: 450px){
+     #side{
+       margin-top: 120px;
+     }
+     #content{
+       position: relative;
+       margin-top:  0px;
+       width: 100%;
+     }
+     #carddata{
+       margin-bottom: 20px;
+     }
+     .card{
+       margin-bottom: 10px;
+     }
+   }
+  
+
+
+   </style>
+  {% block body %}
+  <body>
+    
+    <!-- navs -->
+    {% block navs %}
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgb(15, 40, 73);">
+        <img src="{{url_for('static',filename='img/2.png')}}" width="130px" height="40px" alt="">
+       
+        <form class="form-inline my-2 my-lg-0 ml-auto">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+          </form>
+          <div class="icon ml-4">
+              <i class="fas fa-envelope mr-3" data-toggle="tooltip" data-placement="bottom" title="pesan"></i>
+              <i class="fas fa-bell mr-3" data-toggle="tooltip" data-placement="bottom" title="pemberitahuan"></i>
+                <a href="{{url_for('logout')}}">
+                  <i class="fas fa-sign-out-alt mr-3" data-toggle="tooltip" data-placement="bottom" title="logout"></i>
+                </a>
+                
+              </i>
+          </div>
+         
+        </div>
+      </nav>
+    {% endblock navs %}  
+    <!-- navs -->
+
+    <div class="row mt-5">
+      <!-- sidebar -->
+      {% block sidebar %}
+    <div class="col-md-2 bg-dark pr-3 pt-4 height-100 " id="side">
+            <ul class="nav flex-column ml-3 ">
+                <li class="nav-item">  
+                  <a class="nav-link active" href="{{url_for('admin')}}" id="dash"><i class="fas fa-tachometer-alt mr-2"></i>DASBORD</a> <hr class="bg-scondary">
+                </li>
+            
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('upload')}}"><i class="fas fa-cloud-upload-alt mr-2"></i>UPLOAD</a><hr class="bg-scondary">
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('add')}}"><i class="fas fa-plus"></i> NEW ADMIN</a><hr class="bg-scondary">
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('kategori')}}"><i class="fas fa-plus"></i> NEW KATEGORI</a><hr class="bg-scondary">
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('adminconten')}}"><i class="fas fa-plus"></i> CONTEN</a><hr class="bg-scondary">
+                </li>
+
+
+                <div style="height: 357px; width: 80%; background-color: rgb(55, 47, 68);  border-radius: 5px;"></div>
+              </ul>
+        </div>
+      {% endblock sidebar %}  
+      <!-- sidebar -->
+      <!-- conten -->
+      {% block conten %}
+        <div class="col-md-10 " style="background-color: rgb(0, 5, 61);" id="content">
+          <div style="color: black;">
+            <h3><i class="fas fa-tachometer-alt mt-4 ml-3 mr-3"></i>DASBOARD</h3><hr class="bg-scondary">
+          </div>  
+            <div class="row" id="carddata">
+
+                <div class="card ml-4" style="width: 18rem; background-color: rgb(2, 87, 136);">
+                    <div class="card-body">
+                        <div class="card-body-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <p class="card-text">JUMLAH USER:</p>  
+                        <div class="display-4">5</div>
+                      <a href="">LIHAT DETAILS <i class="fas fa-angle-double-right"></i></a>
+                    </div>
+                  </div>
+
+                  <div class="card ml-4" style="width: 18rem; background-color: rgb(218, 0, 0);">
+                    <div class="card-body">
+                        <div class="card-body-icon">
+                          <i class="far fa-newspaper"></i>
+                        </div>
+                        <p class="card-text">JUMLAH CONTEN:</p>  
+                        <div class="display-4">100</div>
+                      <a href="">LIHAT DETAILS <i class="fas fa-angle-double-right"></i></a>
+                    </div>
+                  </div>
+
+            </div>
+        </div>
+      {% endblock conten %}  
+      <!-- conten -->
+
+    </div>
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   {% block js %} 
+    <script src="{{url_for('static',filename='js/admin.js')}}"></script>
+    <script src="{{url_for('static',filename='js/ckeditor/ckeditor.js')}}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    {% endblock js %}
+  </body>
+  {% endblock body %}
+</html>

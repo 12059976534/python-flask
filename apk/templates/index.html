@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  {% block head %}
+  <head>
+    <!-- Required meta tags -->
+    <meta name="theme-color" content="#023875 ">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block style %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}" >
+    <link rel="stylesheet" href="{{url_for('static',filename='fontawesome/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/admin.css')}}">
+    {% endblock style %}
+    {% block title %}
+    <title style="background-color: black;">Hello, world!</title>
+    {% endblock title %}
+  </head>
+  {% endblock head %}
+   <style type="text/css">
+  
+    
+    
+    @media (max-width: 770px){ 
+      #conten1{
+        margin-top: 100px;
+      }
+      body{
+        background-color: blue;
+      }
+
+      #card{
+      margin-top: 30px;
+      /* width: 18rem; */
+      width: 95%;
+      max-height: 25%;
+      }
+      #conten1{
+        margin-left: 0px;
+      }
+      .titles{
+        max-width: 200px;
+      }
+      .imgs {
+        max-width: 100px;
+      }
+
+    }
+    
+    #conten1{
+        margin-left: 5px;
+        max-width: 1000px;
+      }
+
+    #card{
+      margin-top: 30px;
+      /* width: 18rem; */
+      /* width: 30%;
+      max-height: 25%; */
+    }
+   
+   
+   .footer{
+    text-align: center;
+    padding: 3px;
+    background-color: rgb(12, 34, 68);
+    color: white;
+   }
+   body{
+       background-color:rgb(15, 40, 80) ;
+   }
+   .navbar{
+     background-color: rgb(8, 8, 84);
+   }
+   #card{
+     min-width: 300px;
+   }
+   .ket{
+     min-height: 50%;
+   }
+   .time{
+     position: absolute;
+     z-index: 0;
+     top: 210px;
+     right: 9px;
+     font-size: 15px;
+   }
+
+   </style>
+  
+  <body >
+    
+    <!-- navs -->
+    {% block navs %}
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+        <form action="{{url_for('search')}}" method="POST" class="form-inline my-2 my-lg-0">
+          <input name="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <a href="{{url_for('search')}}">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </a>
+          
+        </form>
+      </div>
+    </nav>
+
+
+    {% endblock navs %}  
+    <!-- navs -->
+    <!-- conten -->
+    {% block conten %}
+    <div id="con" class="row mt-5 " style="padding: 0; margin: 0; width: 100%;">
+        <div class="col-md-8">
+            <div class="row " id="conten1">
+               {% for data in data %}
+               <a class="card-link" href="details{{data.id}}">
+                <div class="card mr-2 col-md-4" id="card" style=" background-color: rgb(19, 33, 44); max-height: 250px; min-height: 250px;">
+                  <div class="card-body">
+                    <h5 class="card-title text-light">
+                      <div class="row">
+                        
+                          <div class="imgs col-md-2 mr-3 col-sm-3 ">
+                            <img class="rounded-circle" src="{{url_for('static',filename='upload/'+data.user.gambar)}}" alt="" width="50" height="50">
+                          </div>
+                          
+                          <div class="titles col ">
+                            <div class="col-md">{{data.tilte}}</div>
+                            <h6 class="col-md text-dark">{{data.user.nama}}</h6>  
+                          </div>
+                      
+                      </div>
+                    </h5>
+
+                    <h6 class="card-subtitle mb-2 text-muted">{{data.kategori.kat}}</h6>
+                    <div class="ket ">
+                      <p class="card-text text-light">{{data.ket|truncate(100)|striptags }}</p>
+                    </div>
+                    <div class="row">
+                      <div class="mb-2 " style="max-width: 150px;">  
+                        <a href="#" class="time card bg-transparent card-link border border-primary"><div class="mr-2 ml-2">{{data.data_time.strftime('%d %B, %Y')}}</div></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               </a>
+                
+              {% endfor %}  
+    
+              
+               </div>
+            
+          
+             
+        </div>
+        
+        <div class="col-md-3"></div>
+    </div>
+    {% endblock conten %}
+    <!-- conten -->
+
+    
+    {% block footer %}
+    <footer class="footer mt-5 ">
+        <p><span>Copyright &copy; andri wahyu anugran 2020</span><br>
+        <a href="jkomontainugrah@gmail.com">FUTURE@gmail.com</a></p>
+    </footer>
+    {% endblock footer %}
+
+
+   
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{{url_for('static',filename='js/admin.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+  
+</html>

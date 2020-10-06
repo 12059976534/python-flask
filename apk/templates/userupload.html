@@ -1,0 +1,69 @@
+{% extends 'admin.html' %}
+
+{% block sidebar %}
+<div class="col-md-2 bg-dark pr-3 pt-4 height-100 " id="side">
+        <ul class="nav flex-column ml-3 ">
+            <li class="nav-item">  
+              <a class="nav-link active" href="{{url_for('user')}}" id="dash"><i class="fas fa-tachometer-alt mr-2"></i>DASBORD</a> <hr class="bg-scondary">
+            </li>
+        
+            <li class="nav-item">
+              <a class="nav-link" href=""><i class="fas fa-cloud-upload-alt mr-2"></i>UPLOAD</a><hr class="bg-scondary">
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('usrconten')}}"><i class="fas fa-plus"></i> CONTENT</a><hr class="bg-scondary">
+            </li>
+
+            <div style="height: 357px; width: 80%; background-color: rgb(55, 47, 68);  border-radius: 5px;"></div>
+          </ul>
+    </div>
+  {% endblock sidebar %}  
+
+  {% block conten %}
+  <div class="col-md-10" style="background-color: rgb(0, 5, 61);">
+    <div style="color: black;">
+      <h3><i class="fas fa-cloud-upload-alt mt-4 ml-3 mr-3"></i>UPLOAD</h3><hr class="bg-scondary">
+    </div>  
+  
+    <div class="container">
+      <!-- {{ ckeditor.load() }} -->
+      {{ ckeditor.load(custom_url=url_for('static', filename='js/ckeditor/ckeditor.js')) }}
+      <form action="{{url_for('upload')}}" method="POST">
+        <input class="mb-3" type="submit" value="POST">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">TITLE</label>
+          <input name="title" type="text" class="form-control" id="exampleFormControlInput1" placeholder="TITLE_EXAMPLE">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlInput1">KATEGORI</label>
+          <select name="kategori" id="" class="form-control">
+            {% for data in data %}
+            <option value="{{data}}" >{{data}}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="ket" >KETERANGAN</label>
+          <textarea name="ket" class="form-control" id="ket"  ></textarea>
+        </div>
+       
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1" >ISI CONTEN</label>
+          <textarea name="isi" class="form-control" id="ck" rows="3"></textarea>
+        </div>
+       
+      </form>
+    </div>
+
+<script type="text/javascript">
+  CKEDITOR.replace( 'ck',{
+     height:['800px']
+  });
+</script>
+  
+      
+  </div>
+  {% endblock conten %}     

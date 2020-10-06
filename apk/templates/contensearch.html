@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+
+{% block conten %}
+<div class="bg-danger" style="min-height: 1000px; width: 100%;">
+<div class="">
+    <div class="col" style="margin-top: 100px; position: absolute;">
+        {% for data in data %}
+        <div class="card mt-2" style="">
+          <div class="col">
+            <div class="row ml-3">
+                <div class="">
+                    <img src="{{url_for('static',filename='img/1.png')}}" alt="" width="30px" height="100%">
+                </div>
+                <div class=" ml-2 ">
+                    <a href="">
+                        <h5>{{data.tilte}}</h5>
+                    </a>
+                </div>
+               
+            </div>
+
+            <p class="ml-3">{{data.ket}}</p>
+
+          </div>
+
+        </div>
+        {% endfor %}
+
+      </div>  
+</div>
+
+</div>
+{% endblock conten %}
+
+{% block footer %}
+<footer class="footer bg-dark">
+    <p>Author: Hege Refsnes<br>
+    <a href="jkomontainugrah@gmail.com">FUTURE@gmail.com</a></p>
+</footer>
+{% endblock footer %}
+
